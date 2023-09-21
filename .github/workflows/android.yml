@@ -22,6 +22,9 @@ jobs:
 
     - name: Install qt
       uses: jurplel/install-qt-action@v3
+      with:
+        host: linux
+        target: android
     - name: build
       run: |
         ls -la
