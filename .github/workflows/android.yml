@@ -30,4 +30,6 @@ jobs:
       run: |
         ls -la
         qmake CONFIG+=release -spec android-clang
+        make qmake_all
+        make
         ls -la
