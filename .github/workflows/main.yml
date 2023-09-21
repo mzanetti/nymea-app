@@ -16,4 +16,5 @@ jobs:
         sudo apt-get install clickable
     - name: build
       run: |
-        clickable
+        ls -la
+        clickable build --skip-review --arch $ARCH
