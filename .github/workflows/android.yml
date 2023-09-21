@@ -21,8 +21,14 @@ jobs:
         java-version: '11'
         distribution: 'temurin'
         cache: gradle
-      run: find /usr/local/lib/android/sdk/ndk/
 
+    - name: Setup Android NDK
+      # You may pin to the exact commit or the version.
+      # uses: nttld/setup-ndk@dbacc5871a0fac6eef9a09d2ca86bc8bf79432c3
+      uses: nttld/setup-ndk@v1.3.1
+      with:
+        ndk-version: 21.3.6528147
+    
     - name: Install qt
       uses: jurplel/install-qt-action@v3
       with:
@@ -31,7 +37,6 @@ jobs:
         arch: 'android'
         version: '5.15.2'
         modules: 'qtcharts'
-      run: find /usr/local/lib/android/sdk/ndk/
     - name: build
       run: |
         ls -la
