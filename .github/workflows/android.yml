@@ -44,9 +44,8 @@ jobs:
         ls -la
         find $ANDROID_NDK_HOME
         qmake CONFIG+=release -spec android-clang
-        $ANDROID_NDK_HOME/prebuilt/linux-x86_64/bin/make
         make qmake_all
         make
         ls -la
       env:
-        ANDROID_NDK_HOME: ${{ steps.setup-ndk.outputs.ndk-path }}
+        ANDROID_NDK_ROOT: ${{ steps.setup-ndk.outputs.ndk-path }}
