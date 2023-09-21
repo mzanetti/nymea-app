@@ -44,5 +44,5 @@ jobs:
         find /usr/local/lib/android/sdk/ndk/ -name arm-linux-androideabi-ranlib
         qmake CONFIG+=release -spec android-clang
         make qmake_all
-        ;make
+        make
         ls -la
