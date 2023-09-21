@@ -18,4 +18,4 @@ jobs:
     - name: build
       run: |
         ls -la
-        clickable build --skip-review --arch $ARCH
+        clickable build --skip-review --arch armhf
