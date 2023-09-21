@@ -29,5 +29,5 @@ jobs:
     - name: build
       run: |
         ls -la
-        qmake
+        qmake CONFIG+=release -spec android-clang
         ls -la
