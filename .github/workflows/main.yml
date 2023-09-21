@@ -20,7 +20,7 @@ jobs:
     - name: build
       run: |
         ls -la
-        sed -i "s/\"version\": \"[1-9\.]*\"/\"version\": \"`head -n 1 version.txt`\"/" packaging/ubuntu/click/manifest.json
+        sed -i "s/\"version\": \"[0-9\.]*\"/\"version\": \"`head -n 1 version.txt`\"/" packaging/ubuntu/click/manifest.json
         clickable build --skip-review --arch armhf
     - name: archive artifacts
       uses: actions/upload-artifact@v3.1.3
