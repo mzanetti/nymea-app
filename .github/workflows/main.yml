@@ -9,6 +9,7 @@ jobs:
     name: Ubuntu click package
     runs-on: ubuntu-22.04
     steps:
+    - uses: actions/checkout@v3
     - name: setup build environment
       run: |
         sudo add-apt-repository ppa:bhdouglass/clickable
