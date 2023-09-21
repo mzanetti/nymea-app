@@ -22,7 +22,8 @@ jobs:
         distribution: 'temurin'
         cache: gradle
 
-    - name: setup-ndk
+    - name: Setup android NDK
+      id: setup-ndk
       # You may pin to the exact commit or the version.
       # uses: nttld/setup-ndk@dbacc5871a0fac6eef9a09d2ca86bc8bf79432c3
       uses: nttld/setup-ndk@v1.3.1
@@ -44,7 +45,6 @@ jobs:
         echo ndk home $ANDROID_NDK_HOME
         qmake CONFIG+=release -spec android-clang
         make qmake_all
-        make
         ls -la
       env:
         ANDROID_NDK_HOME: ${{ steps.setup-ndk.outputs.ndk-path }}
