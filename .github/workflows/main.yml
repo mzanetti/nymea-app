@@ -28,4 +28,4 @@ jobs:
       uses: actions/upload-artifact@v3.1.3
       with:
         name: Ubuntu click armhf
-        path: build/arm-linux-gnueabihf/app/io.guh.nymeaapp_*.click
+        path: build/*/app/io.guh.nymeaapp_*.click
