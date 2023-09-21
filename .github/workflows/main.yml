@@ -22,9 +22,10 @@ jobs:
         ls -la
         sed -i "s/\"version\": \"[0-9\.]*\"/\"version\": \"`head -n 1 version.txt`\"/" packaging/ubuntu/click/manifest.json
         clickable build --skip-review --arch armhf
+        clickable build --skip-review --arch arm64
         ls -la
     - name: archive artifacts
       uses: actions/upload-artifact@v3.1.3
       with:
         name: Ubuntu click armhf
-        path: build/arm-linux-gnueabihf/app/io.guh.nymeaapp_*_armhf.click
+        path: build/arm-linux-gnueabihf/app/io.guh.nymeaapp_*.click
