@@ -22,7 +22,7 @@ jobs:
         distribution: 'temurin'
         cache: gradle
 
-    - name: Setup Android NDK
+    - name: setup-ndk
       # You may pin to the exact commit or the version.
       # uses: nttld/setup-ndk@dbacc5871a0fac6eef9a09d2ca86bc8bf79432c3
       uses: nttld/setup-ndk@v1.3.1
@@ -42,8 +42,6 @@ jobs:
       run: |
         ls -la
         echo ndk home $ANDROID_NDK_HOME
-        find /usr/local/lib/android/sdk/ndk/
-        find /usr/local/lib/android/sdk/ndk/ -name arm-linux-androideabi-ranlib
         qmake CONFIG+=release -spec android-clang
         make qmake_all
         make
