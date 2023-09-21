@@ -8,8 +8,10 @@ jobs:
   ubuntu_click:
     name: Ubuntu click package
     runs-on: ubuntu-22.04
-    run: |
-      sudo add-apt-repository ppa:bhdouglass/clickable
-      sudo apt-get update
-      sudo apt-get install clickable
+    steps:
+    - name: setup build environment
+      run: |
+        sudo add-apt-repository ppa:bhdouglass/clickable
+        sudo apt-get update
+        sudo apt-get install clickable
     
