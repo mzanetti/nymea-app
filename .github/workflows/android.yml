@@ -25,6 +25,7 @@ jobs:
       with:
         host: linux
         target: android
+        version: '5.15.2'
     - name: build
       run: |
         ls -la
