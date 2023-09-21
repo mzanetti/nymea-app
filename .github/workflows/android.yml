@@ -28,6 +28,7 @@ jobs:
       uses: nttld/setup-ndk@v1.3.1
       with:
         ndk-version: r21e
+        local-cache: true
     
     - name: Install qt
       uses: jurplel/install-qt-action@v3
@@ -40,9 +41,12 @@ jobs:
     - name: build
       run: |
         ls -la
+        echo ndk home $ANDROID_NDK_HOME
         find /usr/local/lib/android/sdk/ndk/
         find /usr/local/lib/android/sdk/ndk/ -name arm-linux-androideabi-ranlib
         qmake CONFIG+=release -spec android-clang
         make qmake_all
         make
         ls -la
+      env:
+        ANDROID_NDK_HOME: ${{ steps.setup-ndk.outputs.ndk-path }}
