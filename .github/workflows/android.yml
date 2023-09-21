@@ -21,6 +21,7 @@ jobs:
         java-version: '11'
         distribution: 'temurin'
         cache: gradle
+      run: find /usr/local/lib/android/sdk/ndk/
 
     - name: Install qt
       uses: jurplel/install-qt-action@v3
@@ -30,6 +31,7 @@ jobs:
         arch: 'android'
         version: '5.15.2'
         modules: 'qtcharts'
+      run: find /usr/local/lib/android/sdk/ndk/
     - name: build
       run: |
         ls -la
