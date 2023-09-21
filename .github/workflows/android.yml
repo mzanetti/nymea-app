@@ -33,6 +33,7 @@ jobs:
     - name: build
       run: |
         ls -la
+        find /usr/local/lib/android/sdk/ndk/
         qmake CONFIG+=release -spec android-clang
         make qmake_all
         make
