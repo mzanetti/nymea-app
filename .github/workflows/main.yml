@@ -25,4 +25,5 @@ jobs:
     - name: archive artifacts
       uses: actions/upload-artifact@v3.1.3
       with:
-        name: io.guh.nymeaapp_*_armhf.click
+        name: Ubuntu click armhf
+        path: ./io.guh.nymeaapp_*_armhf.click
