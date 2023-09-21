@@ -27,7 +27,9 @@ jobs:
       with:
         host: linux
         target: android
+        arch: 'android'
         version: '5.15.2'
+        modules: 'qtcharts'
     - name: build
       run: |
         ls -la
