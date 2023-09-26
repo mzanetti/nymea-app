@@ -46,8 +46,8 @@ jobs:
         qmake CONFIG+=release -spec android-clang
         make qmake_all
         make
-        find .
-        androiddeployqt --input nymea-app/android-nymea-app-deployment-settings.json --output nymea-app/android-build --android-platform android-33 --gradle
+        echo "androiddeployqt starting"
+        androiddeployqt --input nymea-app/android-nymea-app-deployment-settings.json --output nymea-app/android-build --android-platform android-33 --gradle --aab --verbose
         find .
       env:
         ANDROID_NDK_ROOT: ${{ steps.setup-ndk.outputs.ndk-path }}
