@@ -1,3 +1,5 @@
+name: Ubuntu Touch CI
+
 on:
   push:
     branches:
