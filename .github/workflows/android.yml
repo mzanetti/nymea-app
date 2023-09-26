@@ -42,7 +42,6 @@ jobs:
     - name: build
       run: |
         ls -la
-        find $ANDROID_NDK_HOME
         qmake CONFIG+=release -spec android-clang
         make qmake_all
         make -j4
