@@ -42,12 +42,14 @@ jobs:
     - name: build
       run: |
         ls -la
-        qmake CONFIG+=release -spec android-clang
+        mkdir builddir
+        cd builddir
+        qmake CONFIG+=release -spec android-clang ..
         make qmake_all
         make -j4
         make INSTALL_ROOT=$PWD/android-build/ install
         find .
         echo "androiddeployqt starting"
-        androiddeployqt --input nymea-app/android-nymea-app-deployment-settings.json --output nymea-app/android-build --android-platform android-33 --gradle --aab --verbose
+        androiddeployqt --input nymea-app/android-nymea-app-deployment-settings.json --output nymea-app/android-build --android-platform android-33 --gradle --verbose
       env:
         ANDROID_NDK_ROOT: ${{ steps.setup-ndk.outputs.ndk-path }}
