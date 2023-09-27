@@ -44,14 +44,18 @@ jobs:
         sudo mv /usr/local/lib/android/sdk/build-tools/34.0.0/d8 /usr/local/lib/android/sdk/build-tools/34.0.0/dx # https://stackoverflow.com/questions/68387270/android-studio-error-installed-build-tools-revision-31-0-0-is-corrupted
         sudo mv /usr/local/lib/android/sdk/build-tools/34.0.0/lib/d8.jar /usr/local/lib/android/sdk/build-tools/34.0.0/lib/dx.jar # https://stackoverflow.com/questions/68387270/android-studio-error-installed-build-tools-revision-31-0-0-is-corrupted
         ls -la
+        VERSION=`head -n 1 version.txt | tr -d "\n"`
         mkdir builddir
         cd builddir
         qmake CONFIG+=release -spec android-clang ..
         make qmake_all
         make -j8
         make INSTALL_ROOT=$PWD/nymea-app/android-build/ install
-        find .
         echo "androiddeployqt starting"
-        androiddeployqt --input nymea-app/android-nymea-app-deployment-settings.json --output nymea-app/android-build --android-platform android-33 --gradle --verbose
+        androiddeployqt --input nymea-app/android-nymea-app-deployment-settings.json --output nymea-app/android-build --android-platform android-33 --gradle --aab --verbose
+        find .
+        # mv android-build/build/outputs/apk/release/android-build-release-signed.apk nymea-app-android-release-signed-$VERSION.apk
+        mv android-build/build/outputs/bundle/debug/android-build-debug.aab nymea-app-android-debug-$VERSION.aab
+        mv android-build/build/outputs/bundle/release/android-build-release.aab nymea-app-android-release-$VERSION.aab
       env:
         ANDROID_NDK_ROOT: ${{ steps.setup-ndk.outputs.ndk-path }}
