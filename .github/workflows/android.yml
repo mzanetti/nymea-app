@@ -54,8 +54,15 @@ jobs:
         echo "androiddeployqt starting"
         androiddeployqt --input nymea-app/android-nymea-app-deployment-settings.json --output nymea-app/android-build --android-platform android-33 --gradle --aab --verbose
         find .
-        # mv android-build/build/outputs/apk/release/android-build-release-signed.apk nymea-app-android-release-signed-$VERSION.apk
-        mv android-build/build/outputs/bundle/debug/android-build-debug.aab nymea-app-android-debug-$VERSION.aab
-        mv android-build/build/outputs/bundle/release/android-build-release.aab nymea-app-android-release-$VERSION.aab
+        # mv nymea-app/android-build/build/outputs/apk/release/android-build-release-signed.apk nymea-app-android-release-signed-$VERSION.apk
+        mv nymea-app/android-build/build/outputs/apk/debug/android-build-debug.apk nymea-app-android-debug-$VERSION.apk
+        mv nymea-app/android-build/build/outputs/bundle/debug/android-build-debug.aab nymea-app-android-debug-$VERSION.aab
+        mv nymea-app/android-build/build/outputs/bundle/release/android-build-release.aab nymea-app-android-release-$VERSION.aab
       env:
         ANDROID_NDK_ROOT: ${{ steps.setup-ndk.outputs.ndk-path }}
+
+    - name: archive artifacts
+      uses: actions/upload-artifact@v3.1.3
+      with:
+        name: Android packages
+        path: builddir/nymea-app-android-*
