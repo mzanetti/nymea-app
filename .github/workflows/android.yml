@@ -41,12 +41,14 @@ jobs:
         modules: 'qtcharts'
     - name: build
       run: |
+        sudo mv /usr/local/lib/android/sdk/build-tools/34.0.0/d8 /usr/local/lib/android/sdk/build-tools/34.0.0/dx # https://stackoverflow.com/questions/68387270/android-studio-error-installed-build-tools-revision-31-0-0-is-corrupted
+        sudo mv /usr/local/lib/android/sdk/build-tools/34.0.0/lib/d8.jar /usr/local/lib/android/sdk/build-tools/34.0.0/lib/dx.jar # https://stackoverflow.com/questions/68387270/android-studio-error-installed-build-tools-revision-31-0-0-is-corrupted
         ls -la
         mkdir builddir
         cd builddir
         qmake CONFIG+=release -spec android-clang ..
         make qmake_all
-        make -j4
+        make -j8
         make INSTALL_ROOT=$PWD/nymea-app/android-build/ install
         find .
         echo "androiddeployqt starting"
